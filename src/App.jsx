@@ -30,7 +30,10 @@ ChartJS.register(
   Filler
 );
 
-const BACKEND_URL = import.meta.env.VITE_API_BASE || 'https://call-log-qaq7.onrender.com';
+const BACKEND_URL = import.meta.env.VITE_API_BASE ||
+  (typeof window !== 'undefined' && (window.location.origin.includes('onrender.com') || window.location.hostname !== 'localhost')
+    ? window.location.origin
+    : 'https://jj-call-log-backend.onrender.com');
 const SOCKET_URL = BACKEND_URL;
 const API_BASE = BACKEND_URL;
 
@@ -1763,6 +1766,27 @@ function App() {
             </div>
             <button type="submit" className="btn-primary">Authenticate</button>
           </form>
+          <div style={{ marginTop: '16px', textAlign: 'center' }}>
+            <a
+              href={`${API_BASE}/app-release.apk`}
+              download="JJ_Call_CRM_v4.3.apk"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#6366f1',
+                textDecoration: 'none',
+                fontSize: '13px',
+                fontWeight: 600,
+                padding: '8px 14px',
+                borderRadius: '8px',
+                background: 'rgba(99, 102, 241, 0.08)',
+                border: '1px solid rgba(99, 102, 241, 0.2)'
+              }}
+            >
+              📱 Download Android App (APK v4.3)
+            </a>
+          </div>
         </div>
       </div>
     );
@@ -1786,6 +1810,27 @@ function App() {
             }}
           />
           <span style={{ fontWeight: 800, letterSpacing: '0.5px' }}>JJ Call CRM</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <a
+            href={`${API_BASE}/app-release.apk`}
+            download="JJ_Call_CRM_v4.3.apk"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 14px',
+              borderRadius: '8px',
+              background: '#4f46e5',
+              color: '#ffffff',
+              fontSize: '12px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              boxShadow: '0 2px 6px rgba(79, 70, 229, 0.4)'
+            }}
+          >
+            📱 App APK (v4.3)
+          </a>
         </div>
         <div className="user-profile">
           {user.role !== 'Executive' && (

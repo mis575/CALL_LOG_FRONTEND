@@ -30,8 +30,9 @@ ChartJS.register(
   Filler
 );
 
-const SOCKET_URL = 'https://call-log-qaq7.onrender.com';
-const API_BASE = 'https://call-log-qaq7.onrender.com';
+const BACKEND_URL = import.meta.env.VITE_API_BASE || 'https://call-log-qaq7.onrender.com';
+const SOCKET_URL = BACKEND_URL;
+const API_BASE = BACKEND_URL;
 
 // Helper to parse pasted raw text (from Excel, Google Sheets, CSV, or multiline text)
 const parseBulkLeads = (text) => {
